@@ -22,20 +22,25 @@ export default function Home() {
         </div>
       <div className="text-center h-screen   flex flex-col items-center justify-center px-4 ">
         <div className="flex flex-col gap-6 justify-center">
-          <img
+        <div>
+
+       <img
             src="/wallet.svg"
-            className="md:h-10 h-8 hover:cursor-pointer transition delay-150 duration-300 ease-in-out hover:-translate-y-1"
-            onClick={() => window.location.reload()}
+            className="md:h-12 h-10 hover:cursor-pointer transition delay-150 duration-300 ease-in-out hover:-translate-y-1"
+            onClick={() => { window.location.href = "/"; }}
             alt=""
-          />
+            />
           <h1 className="md:text-3xl text-2xl font-semibold text-blue-800 mb-4">ZapWallet</h1>
-        </div>
+        
         <p className="text-gray-600 mb-8">
            Fast . Secure . Simple
         </p>
+            </div>
+       
+      </div>
         <button
           onClick={handleSignup}
-          className="bg-blue-800 hover:bg-blue-900 hover:shadow-xl text-md md:text-lg text-zinc-100 font-medium py-2 px-8 rounded-lg transition duration-200 shadow"
+          className="bg-blue-800 hover:bg-blue-900 hover:shadow-xl text-sm md:text-md text-zinc-100 font-medium py-2 px-8 rounded-lg transition duration-200 shadow"
         >
           Get started
         </button>
