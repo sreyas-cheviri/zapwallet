@@ -2,15 +2,17 @@ import { Router, Response } from "express";
 import { CustomRequest } from "../utils/CustomRequest";
 import { AccountModel } from "../models/AccountsModel";
 import mongoose from "mongoose";
+import { auth } from "../middleware/auth";
 
 const AuthRouter = Router();
 
 AuthRouter.get(
   "/balance",
+  auth,
   async (req: CustomRequest, res: Response): Promise<void> => {
     try {
       const acc = await AccountModel.findOne({
-        _id: req.userId,
+        userId: req.userId,
       });
 
       if (!acc) {
@@ -32,7 +34,7 @@ AuthRouter.get(
   }
 );
 
-AuthRouter.post("/transfer", async (req: CustomRequest, res: Response) => {
+AuthRouter.post("/transfer",   auth, async (req: CustomRequest, res: Response) => {
   const session = await mongoose.startSession();
   session.startTransaction();
   const { amount, recevierID } = req.body;
@@ -62,10 +64,10 @@ AuthRouter.post("/transfer", async (req: CustomRequest, res: Response) => {
     return;
   }
 
-  await acc
+  await AccountModel
     .updateOne({ userId: req.userId }, { $inc: { balance: -amount } })
     .session(session);
-  await recevingAcc
+  await AccountModel
     .updateOne({ userId: recevierID }, { $inc: { balance: amount } })
     .session(session);
 
