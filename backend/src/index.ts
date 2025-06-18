@@ -12,7 +12,7 @@ const serverStart = async () => {
   try {
     await connectDb();
     app.listen(3000, () => {
-      console.log("server started ");
+      console.log("server started");
     });
   } catch (error) {
     console.log("failed to start the server");
