@@ -5,6 +5,7 @@ import { userModel } from "../models/UserModel";
 import jwt from "jsonwebtoken";
 import { auth } from "../middleware/auth";
 import { CustomRequest } from "../utils/CustomRequest";
+import { AccountModel } from "../models/AccountsModel";
 
 const userRouter = Router();
 
@@ -69,11 +70,13 @@ userRouter.post(
 
     try {
       const findUser =await userModel.findOne({ username });
-     console.log("Find User result:", findUser); 
-      
       if (!findUser) {
-        await userModel.create({ username, password: hashpassword , email});
+        const user = await userModel.create({ username, password: hashpassword , email});
         res.status(200).json({ message: "user created successfully" });
+        await AccountModel.create({
+          userId : user._id,
+          balance : 1+ 10000*Math.random()
+        })
       } else {
         res.status(500).json({ message: "user already exists" });
       }
