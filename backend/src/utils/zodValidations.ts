@@ -12,7 +12,7 @@ import { z } from "zod";
 });
 
  const userSignInValidation = z.object({
-  username: z.string().min(3, { message: "username must be atleast 2 chars" }),
+  email: z.string().min(3, { message: "username must be atleast 2 chars" }),
   password: z.string().min(6, { message: "password must atleast 6 chars" }),
 });
 

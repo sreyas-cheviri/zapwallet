@@ -38,7 +38,7 @@ export default function Signin() {
 
   return (
     <div className="min-h-screen flex">
-      <div className="w-1/2 bg-gradient-to-br hidden md:flex from-blue-100 to-blue-200 items-center justify-center">
+      <div className="w-1/2 bg-gradient-to-br hidden md:flex from-blue-100 border-r border-dashed border-blue-700 to-blue-200 items-center justify-center">
         <div>
           <img
             src="/wallet.svg"
@@ -51,7 +51,7 @@ export default function Signin() {
             Fast . Secure . Simple
           </p>
         </div>
-      </div>
+      </div >
       <div className="md:w-1/2 w-full m-5 flex items-center justify-center ">
         <form
           onSubmit={handleSignin}

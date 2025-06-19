@@ -22,6 +22,9 @@ export default function Signup() {
       const data = await res.json();
       if (res.ok) {
         setMsg('Signup successful! You can now log in.');
+        setTimeout(() => {
+          navigate('/signin');
+        }, 1500);
       } else {
         setMsg(data.message || 'Signup failed');
       }
@@ -33,8 +36,8 @@ export default function Signup() {
   return (
     <div className="min-h-screen flex">
       
-      <div className="w-1/2 bg-gradient-to-br hidden md:flex from-blue-100 to-blue-200  items-center justify-center">
-      <div>
+      <div className="w-1/2 bg-gradient-to-br hidden md:flex from-blue-100 border-r border-dashed border-blue-700 to-blue-200  items-center justify-center">
+      <div className=''>
 
        <img
             src="/wallet.svg"

@@ -98,14 +98,19 @@ userRouter.post(
       return;
     }
 
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     try {
-      const userFound = await userModel.findOne({ username });
+      console.log("here");
+      
+      const userFound = await userModel.findOne({ email });
       if (!userFound) {
         res.status(404).json({ message: "user not found" });
         return;
       }
+
+      console.log(userFound);
+      
 
       const checkPassword = await bcrypt.compare(password, userFound.password);
       if (!checkPassword) {
