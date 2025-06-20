@@ -5,7 +5,7 @@ interface InputBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const InputBox: React.FC<InputBoxProps> = ({ label, ...props }) => (
-  <div className="flex flex-col gap-1 bg-wh">
+  <div className="flex flex-col gap-1 ">
     {label && <label className="text-sm text-blue-800 px-2 font-medium">{label}</label>}
     <input
       {...props}

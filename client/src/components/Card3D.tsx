@@ -1,14 +1,18 @@
 import React, { useRef } from "react";
-import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useMotionTemplate,
+} from "framer-motion";
 
 interface Card3DProps {
   Balance: number;
 }
 
 function Card3D({ Balance }: Card3DProps) {
-
-    const username = localStorage.getItem("username");
-    const randomVAlue =Math.floor(Math.random()*1000);
+  const username = localStorage.getItem("username");
+  const randomVAlue = Math.floor(Math.random() * 1000);
   const cardRef = useRef<HTMLDivElement>(null);
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
@@ -49,7 +53,7 @@ function Card3D({ Balance }: Card3DProps) {
   return (
     <motion.div
       ref={cardRef}
-      className="relative w-96 h-56 bg-gradient-to-br from-zinc-800  to-blue-800 rounded-2xl shadow-gray-500 hover:shadow-2xl shadow-lg flex items-end justify-between text-white overflow-hidden "
+      className="relative md:w-96 w-80 h-44 md:h-56 bg-gradient-to-br from-zinc-800  to-blue-800 rounded-2xl shadow-gray-500 hover:shadow-2xl shadow-lg flex items-end justify-between text-white overflow-hidden "
       style={{
         perspective: "1000px",
         rotateX: springX,
@@ -69,37 +73,30 @@ function Card3D({ Balance }: Card3DProps) {
         }}
       />
       {/* Card content */}
-      <div className="absolute top-6 left-6 w-12 h-8 bg-gradient-to-br from-zinc-300  to-zinc-600 rounded-md shadow-inner opacity-80 z-10" />
-      <div className="absolute top-14 left-6 text-sm flex justify-between font-mono tracking-widest z-10 select-none">
+      <div className="  absolute top-6 left-6 w-10 h-6 sm:w-12 sm:h-8 bg-gradient-to-br from-zinc-300 to-zinc-600 rounded-md shadow-inner opacity-80 z-10" />
+      <div className="absolute top-14 left-6 text-xs sm:text-sm flex justify-between font-mono tracking-widest z-10 select-none w-[90%]">
         <div>
-
-        {randomVAlue}&nbsp;{randomVAlue*4}&nbsp;9012&nbsp;3456
+          {randomVAlue}&nbsp;{randomVAlue * 4}&nbsp;9012&nbsp;3456ZAPWALLET
         </div>
-        <div>
-            <p>ZAPWALLET</p>
-        </div>
+        
       </div>
 
-
-       <div className="top-24 mx-6 absolute">
-        <p></p>
-        <h1 className="text-2xl font-bold max-w-[220px] truncate">
-  <span className="text-lg font-semibold">Balance:</span>&nbsp;₹ {Balance} 
-</h1>
+      <div className="top-20 sm:top-24 mx-6 sm:mx-6 absolute w-[90%]">
+        <h1 className="text-base sm:text-2xl font-bold max-w-full truncate">
+          <span className="text-xs sm:text-lg font-semibold">Balance:</span>&nbsp;₹ {Balance}
+        </h1>
       </div>
-     
-      <div className="flex justify-between w-full p-6 z-10">
+
+      <div className="flex justify-between w-full p-3 sm:p-6 z-10">
         <div className="flex flex-col">
-          <p className="text-xs text-zinc-300 tracking-widest">CARD HOLDER</p>
-          <p className="text-sm font-semibold tracking-wide">{username}</p>
+          <p className="text-[10px] sm:text-xs text-zinc-300 tracking-widest">USER</p>
+          <p className="text-xs sm:text-sm font-semibold tracking-wide">{username}</p>
         </div>
         <div className="flex flex-col items-end">
-          <p className="text-xs text-zinc-300 tracking-widest">EXPIRES</p>
-          <p className="text-sm font-semibold tracking-wide">12/29</p>
+          <p className="text-[10px] sm:text-xs text-zinc-300 tracking-widest">EXPIRES</p>
+          <p className="text-xs sm:text-sm font-semibold tracking-wide">12/29</p>
         </div>
       </div>
-     
-      
     </motion.div>
   );
 }

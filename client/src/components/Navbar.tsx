@@ -18,7 +18,7 @@ export default function Navbar() {
       </div>
       <button
         onClick={logoutFun}
-        className="hover:cursor-pointer justify-center hover:bg-white hover:px-1 transition-all  duration-75 rounded "
+        className="hover:cursor-pointer justify-center hover:font-bold transition-all  duration-75 rounded "
       >
         <p className="flex gap-1 items-center">
           Logout <LogOut className="h-4" />
