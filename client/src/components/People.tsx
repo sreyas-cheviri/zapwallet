@@ -24,18 +24,17 @@ export default function People() {
     fetch();
   }, [filter]);
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center">
       <div>
         <InputBox
-          onChange={(e) => {
-            SetFilter(e.target.value);
-          }}
-          className="w-3xl rounded-full"
-          placeholder="Pay by username..."
-        />
+                  onChange={(e) => {
+                      SetFilter(e.target.value);
+                  } }
+                  className="md:w-3xl min-w-full rounded-full"
+                  placeholder="Pay by username..." variant={"search"} inputSize={"lg"}        />
       </div>
-      <h1 className="text-xl  m-6 ">People</h1>
-      <div className="flex gap-3 mx-10">
+      {/* <h1 className="text-xl  m-6 ">People</h1> */}
+      <div className="flex gap-3 m-6 flex-wrap justify-center">
 
       {users.map((user) => (
           <User key={user._id} username={user.username} />

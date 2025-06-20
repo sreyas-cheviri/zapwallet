@@ -48,7 +48,7 @@ export default function Dashboard() {
         <Card3D Balance={balance ?? 0} />
         <section className="flex  flex-col items-center justify-start p-4   bg-white rounded-t-3xl w-full md:max-w-4xl min-h-lvh mt-8 ">
           <div className="mt-4 flex gap-2 items-center">
-            <InputBox placeholder="₹ 00.00" type="number" step={0.05}/>
+            <InputBox placeholder="₹ 00.00" type="number" step={0.05} variant={"default"}  inputSize="md"/>
             <CustomButton className="flex gap-1 items-center p-2">
               Send  <ArrowUpRight />
             </CustomButton>

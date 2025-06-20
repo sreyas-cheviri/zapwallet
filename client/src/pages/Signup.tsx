@@ -66,24 +66,21 @@ export default function Signup() {
             placeholder="Username"
             value={username}
             required
-            onChange={e => setUsername(e.target.value)}
-          />
+            onChange={e => setUsername(e.target.value)} variant={'default'} inputSize={'lg'}          />
           <InputBox
             label="Email"
             type="email"
             placeholder="Email"
             value={email}
             required
-            onChange={e => setEmail(e.target.value)}
-          />
+            onChange={e => setEmail(e.target.value)} variant={'default'} inputSize={'lg'}          />
           <InputBox
             label="Password"
             type="password"
             placeholder="Password"
             value={password}
             required
-            onChange={e => setPassword(e.target.value)}
-          />
+            onChange={e => setPassword(e.target.value)} variant={'default'} inputSize={'lg'}          />
           <CustomButton type="submit">Sign Up</CustomButton>
           {msg && (
             <div className="text-center text-sm mt-2 text-blue-700">{msg}</div>

@@ -53,7 +53,7 @@ function Card3D({ Balance }: Card3DProps) {
   return (
     <motion.div
       ref={cardRef}
-      className="relative md:w-96 w-80 h-44 md:h-56 bg-gradient-to-br from-zinc-800  to-blue-800 rounded-2xl shadow-gray-500 hover:shadow-2xl shadow-lg flex items-end justify-between text-white overflow-hidden "
+      className="relative hover:cursor-pointer md:w-96 w-80 h-44 md:h-56 bg-gradient-to-br from-zinc-800  to-blue-800 rounded-2xl shadow-gray-500 hover:shadow-2xl shadow-lg flex items-end justify-between text-white overflow-hidden "
       style={{
         perspective: "1000px",
         rotateX: springX,
