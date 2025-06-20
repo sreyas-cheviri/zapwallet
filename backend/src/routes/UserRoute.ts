@@ -98,7 +98,7 @@ userRouter.post(
       return;
     }
 
-    const { email, password } = req.body;
+    const { email, password  } = req.body;
 
     try {
       console.log("here");
@@ -123,7 +123,8 @@ userRouter.post(
         process.env.jwt_secret || " ",
         { expiresIn: "7days" }
       );
-      res.status(200).json({ message: "user logged in", token: jwttoken });
+      res.status(200).json({ message: "user logged in", token: jwttoken, username: userFound.username });
+      // localStorage is not available on the server side; remove or handle on client side if needed
     } catch (error) {
       console.error("Signin error:", error);
       res.status(500).json({ message: "Internal server error" });

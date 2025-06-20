@@ -4,7 +4,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   const handleSignup = () => {
-    navigate('/signup');
+    navigate('/signin');
   };
 
   return (
@@ -22,7 +22,7 @@ export default function Home() {
         </div>
       <div className="text-center h-screen   flex flex-col items-center justify-center px-4 ">
         <div className="flex flex-col gap-6 justify-center">
-        <div>
+        <div className='flex flex-col md:block '>
 
        <img
             src="/wallet.svg"
