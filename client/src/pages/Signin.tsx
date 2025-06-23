@@ -24,6 +24,7 @@ export default function Signin() {
       const token = data.token;
       localStorage.setItem("token", token);
       localStorage.setItem("username", data.username);
+      localStorage.setItem("id", data.id);
 
       setTimeout(() => {
         navigate("/dashboard");

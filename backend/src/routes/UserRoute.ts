@@ -61,7 +61,9 @@ userRouter.post(
   async (req: Request, res: Response): Promise<void> => {
     const validate = validations.userSignUpValidation.safeParse(req.body);
     if (!validate.success) {
-      res.status(411).json({ message: "incorrect input" });
+      res.status(411).json({ 
+        message: validate.error.errors[0]?.message || "incorrect input"
+      });
       return;
     }
 
@@ -93,8 +95,7 @@ userRouter.post(
     const validate = validations.userSignInValidation.safeParse(req.body);
     if (!validate.success) {
       res.status(411).json({
-        message: "Invalid input",
-        errors: validate.error.errors,
+        message: validate.error.errors[0]?.message || "Invalid input",
       });
       return;
     }
@@ -124,8 +125,8 @@ userRouter.post(
         process.env.jwt_secret || " ",
         { expiresIn: "7days" }
       );
-      res.status(200).json({ message: "user logged in", token: jwttoken, username: userFound.username });
-      // localStorage is not available on the server side; remove or handle on client side if needed
+      res.status(200).json({ message: "user logged in", token: jwttoken, username: userFound.username , id: userFound._id });
+
     } catch (error) {
       console.error("Signin error:", error);
       res.status(500).json({ message: "Internal server error" });

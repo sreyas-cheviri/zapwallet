@@ -66,7 +66,7 @@ export default function People({
       setErr("");
       refreshBalance();
       input.current.value = "";
-      setAmount(0)
+      setAmount(0);
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.data?.message) {
         setErr(error.response.data.message);
@@ -75,7 +75,8 @@ export default function People({
       }
     }
   };
-
+  const currentuser = localStorage.getItem('username');
+  console.log("currentuser", currentuser, "users", users.map(u => u._id));
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="mt-4 flex gap-2 items-center">
@@ -123,15 +124,17 @@ export default function People({
         />
       </div>
 
-      <div className="flex gap-3 m-2 mt-10 md:mt-5 md:m-6 flex-wrap justify-center w-full">
-        {users.map((user) => (
-          <User
-            key={user._id}
-            username={user.username}
-            email={user.email}
-            onSelect={() => {setSelectedUser(user); setErr('')}}
-          />
-        ))}
+      <div className="flex gap-3 mt-10 px-14 flex-wrap justify-center w-full">
+        {users
+          .filter(user => user.username.toString() !== (currentuser ?? "").toString())
+          .map(user => (
+            <User
+              key={user._id}
+              username={user.username}
+              email={user.email}
+              onSelect={() => { setSelectedUser(user); setErr('') }}
+            />
+          ))}
       </div>
     </div>
   );

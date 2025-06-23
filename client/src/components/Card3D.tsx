@@ -6,6 +6,7 @@ import {
   useMotionTemplate,
   AnimatePresence,
 } from "framer-motion";
+import Chips from "./Chips";
 
 interface Card3DProps {
   Balance: number;
@@ -97,32 +98,36 @@ function Card3D({ Balance }: Card3DProps) {
           zIndex: 2,
         }}
       />
-   
-      <div className="  absolute top-6 left-6 w-10 h-6 sm:w-12 sm:h-8 bg-gradient-to-br from-zinc-300 to-zinc-600 rounded-md shadow-inner opacity-80 z-10" />
-      <div className="absolute top-14 left-6 text-xs sm:text-sm flex justify-between font-mono tracking-widest z-10 select-none w-[90%]">
-        <div>
-          {/* {randomVAlue} */}
-          3857&nbsp; 2569
-          {/* {randomVAlue * 4} */}
-          &nbsp;9012&nbsp;3456ZAPWALLET
-        </div>
-        
+
+      <Chips />
+
+      <div className="absolute top-15 left-6 text-xs sm:text-sm flex justify-between font-mono tracking-widest z-10 select-none w-[90%]">
+        <div>3857&nbsp; 2569 &nbsp;9012&nbsp;3456ZAPWALLET</div>
       </div>
 
       <div className="top-20 sm:top-24 mx-6 sm:mx-6 absolute w-[90%]">
         <h1 className="text-base sm:text-2xl font-bold max-w-full truncate">
-          <span className="text-xs sm:text-lg font-semibold">Balance:</span>&nbsp;₹ {Balance}
+          <span className="text-xs sm:text-lg font-semibold">Balance:</span>
+          &nbsp;₹ {Balance}
         </h1>
       </div>
 
       <div className="flex justify-between w-full p-3 sm:p-6 z-10">
         <div className="flex flex-col">
-          <p className="text-[10px] sm:text-xs  text-zinc-300 tracking-widest">USER</p>
-          <p className="text-xs sm:text-sm font-semibold tracking-wide">{username}</p>
+          <p className="text-[10px] sm:text-xs  text-zinc-300 tracking-widest">
+            USER
+          </p>
+          <p className="text-xs sm:text-sm font-semibold tracking-wide">
+            {username}
+          </p>
         </div>
         <div className="flex flex-col items-end">
-          <p className="text-[10px] sm:text-xs text-zinc-300 tracking-widest">EXPIRES</p>
-          <p className="text-xs sm:text-sm font-semibold tracking-wide">12/29</p>
+          <p className="text-[10px] sm:text-xs text-zinc-300 tracking-widest">
+            EXPIRES
+          </p>
+          <p className="text-xs sm:text-sm font-semibold tracking-wide">
+            12/29
+          </p>
         </div>
       </div>
     </motion.div>
