@@ -3,6 +3,7 @@ import InputBox from '../components/InputBox';
 import CustomButton from '../components/CustomButton';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Brand from '../components/Brand';
 
 export default function Signin() {
   const navigate = useNavigate();
@@ -37,26 +38,30 @@ export default function Signin() {
   };
 
   return (
-    <div className="min-h-screen flex">
-      <div className="w-1/2 bg-gradient-to-br hidden md:flex from-blue-100 border-r border-dashed border-blue-700 to-blue-200 items-center justify-center">
-        <div>
-          <img
-            src="/wallet.svg"
-            className="md:h-12 h-10 hover:cursor-pointer transition delay-150 duration-300 ease-in-out hover:-translate-y-1"
-            onClick={() => { window.location.href = "/"; }}
-            alt=""
-          />
-          <h1 className="md:text-3xl text-2xl font-semibold text-blue-800 mb-4">ZapWallet</h1>
-          <p className="text-gray-600 mb-8">
-            Fast . Secure . Simple
-          </p>
+    <div className="min-h-screen flex transition-all duration-200 ">
+      <div className="w-1/2 inset-0 z-0 bg-gradient-to-br hidden md:flex from-blue-100 border-r border-dashed border-blue-700 to-blue-200 items-center justify-center relative">
+       
+        <div
+          className="absolute inset-0 w-full h-full pointer-events-none z-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml;utf8,<svg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'><filter id='noiseFilter'><feTurbulence type='fractalNoise' baseFrequency='1.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noiseFilter)'/></svg>")`,
+            opacity: 0.38,
+            backgroundRepeat: "repeat",
+            backgroundSize: "auto",
+          }}
+        />
+ 
+        <div className="relative z-10">
+          <Brand />
         </div>
-      </div >
-      <div className="md:w-1/2 w-full m-5 flex items-center justify-center ">
+      </div>
+      <div className="md:w-1/2 w-full m-5 flex items-center justify-center z-20 ">
         <form
           onSubmit={handleSignin}
           className="w-full max-w-sm flex flex-col bg-gradient-to-br from-blue-100 to-blue-200 gap-5 border p-10 rounded-2xl border-blue-200"
-        >
+        > <div className='md:hidden block '> 
+     <h1 className="md:text-3xl text-2xl font-semibold text-blue-800 mb-4">ZapWallet</h1>
+      </div>
           <h2 className="text-4xl font-semibold text-blue-800 mb-2">Sign In</h2>
           <InputBox
             label="Email"
@@ -64,14 +69,14 @@ export default function Signin() {
             placeholder="Email"
             value={email}
             required
-            onChange={e => setEmail(e.target.value)} variant={'default'} inputSize={'lg'}          />
+            onChange={e => setEmail(e.target.value)} variant={'default'} inputSize={'md'}          />
           <InputBox
             label="Password"
             type="password"
             placeholder="Password"
             value={password}
             required
-            onChange={e => setPassword(e.target.value)} variant={'default'} inputSize={'lg'}          />
+            onChange={e => setPassword(e.target.value)} variant={'default'} inputSize={'md'}          />
           <CustomButton type="submit">Sign In</CustomButton>
           {msg && (
             <div className="text-center text-sm mt-2 text-blue-700">{msg}</div>

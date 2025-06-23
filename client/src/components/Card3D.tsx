@@ -64,7 +64,7 @@ function Card3D({ Balance }: Card3DProps) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Shine effect */}
+
       <motion.div
         className="pointer-events-none absolute inset-0 rounded-2xl"
         style={{
@@ -72,7 +72,7 @@ function Card3D({ Balance }: Card3DProps) {
           zIndex: 2,
         }}
       />
-      {/* Card content */}
+   
       <div className="  absolute top-6 left-6 w-10 h-6 sm:w-12 sm:h-8 bg-gradient-to-br from-zinc-300 to-zinc-600 rounded-md shadow-inner opacity-80 z-10" />
       <div className="absolute top-14 left-6 text-xs sm:text-sm flex justify-between font-mono tracking-widest z-10 select-none w-[90%]">
         <div>

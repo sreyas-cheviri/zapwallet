@@ -50,7 +50,7 @@ export default function Dashboard() {
           <div className="mt-4 flex gap-2 items-center">
             <InputBox placeholder="₹ 00.00" type="number" step={0.05} variant={"default"}  inputSize="md"/>
             <CustomButton className="flex gap-1 items-center p-2">
-              Send  <ArrowUpRight />
+              Pay  <ArrowUpRight />
             </CustomButton>
           </div>
           <p className="text-xs text-zinc-600 mt-4">

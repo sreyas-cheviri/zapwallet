@@ -1,5 +1,4 @@
 import axios from "axios";
-// import { filter } from "framer-motion/client";
 import { useEffect, useState } from "react";
 import InputBox from "./InputBox";
 import User from "./User";
@@ -31,7 +30,7 @@ export default function People() {
                       SetFilter(e.target.value);
                   } }
                   className="md:w-3xl min-w-full rounded-full"
-                  placeholder="Pay by username..." variant={"search"} inputSize={"lg"}        />
+                  placeholder="Pay by name..." variant={"search"} inputSize={"lg"}        />
       </div>
       {/* <h1 className="text-xl  m-6 ">People</h1> */}
       <div className="flex gap-3 m-6 flex-wrap justify-center">
