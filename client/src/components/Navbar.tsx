@@ -18,10 +18,10 @@ export default function Navbar() {
       </div>
       <button
         onClick={logoutFun}
-        className="hover:cursor-pointer justify-center hover:font-bold transition-all  duration-75 rounded "
+        className="hover:cursor-pointer justify-center  rounded "
       >
-        <p className="flex gap-1 items-center">
-          Logout <LogOut className="h-4" />
+        <p className="flex gap-1 items-center ">
+           <LogOut className="h-7 rounded w-7 hover:bg-blue-100 p-1 transition-all  duration-75" />
         </p>
       </button>
     </div>

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { type RefObject } from 'react';
 
 interface InputBoxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   variant : "search" | "default";
-  label?: string;
+  label?: string ;
   inputSize: "sm" | "md" | "lg" | "vsm";
+  inputRef?: RefObject<HTMLInputElement>;
 }
 
 const variantStyles ={
@@ -20,10 +21,11 @@ const sizeStyles = {
 const defaultStyles =
   "font-sans    cursor-pointer";
 
-const InputBox: React.FC<InputBoxProps> = ({ label, variant = "default", inputSize = "md", ...props }) => (
+const InputBox: React.FC<InputBoxProps> = ({ label, variant = "default", inputSize = "md", inputRef, ...props }) => (
   <div className="flex flex-col gap-1 ">
     {label && <label className="text-sm text-blue-800 px-2 font-medium">{label}</label>}
     <input
+      ref={inputRef}
       {...props}
       className={`
         ${defaultStyles}

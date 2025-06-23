@@ -4,7 +4,10 @@ import rootRouter from  "./routes/indexRoute"
 import cors from 'cors'
 
 const app = express();
-app.use(cors())
+app.use(cors({
+  origin: "http://localhost:5173", // change to your frontend URL if needed
+  credentials: true
+}))
 app.use(express.json())
 app.use("/api/v1" , rootRouter)
 

@@ -1,9 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
   motion,
   useMotionValue,
   useSpring,
   useMotionTemplate,
+  AnimatePresence,
 } from "framer-motion";
 
 interface Card3DProps {
@@ -12,10 +13,11 @@ interface Card3DProps {
 
 function Card3D({ Balance }: Card3DProps) {
   const username = localStorage.getItem("username");
-  const randomVAlue = Math.floor(Math.random() * 1000);
+  // const randomVAlue = Math.floor(Math.random() * 1000);
   const cardRef = useRef<HTMLDivElement>(null);
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Add spring for smoothness
   const springX = useSpring(rotateX, { stiffness: 200, damping: 20 });
@@ -62,8 +64,31 @@ function Card3D({ Balance }: Card3DProps) {
         transition: "box-shadow 0.3s",
       }}
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseLeave={() => {
+        handleMouseLeave();
+        setIsHovered(false);
+      }}
+      onMouseEnter={() => setIsHovered(true)}
     >
+      {/* Shine beam */}
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial={{ x: -200, opacity: 0 }}
+            animate={{ x: 320, opacity: 0.7 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="pointer-events-none absolute inset-0 z-20"
+            style={{
+              background:
+                "linear-gradient(120deg, rgba(255,255,255,0) 60%, rgba(255,255,255,0.5) 80%, rgba(255,255,255,0) 100%)",
+              width: "80%",
+              height: "100%",
+              mixBlendMode: "lighten",
+            }}
+          />
+        )}
+      </AnimatePresence>
 
       <motion.div
         className="pointer-events-none absolute inset-0 rounded-2xl"
@@ -76,7 +101,10 @@ function Card3D({ Balance }: Card3DProps) {
       <div className="  absolute top-6 left-6 w-10 h-6 sm:w-12 sm:h-8 bg-gradient-to-br from-zinc-300 to-zinc-600 rounded-md shadow-inner opacity-80 z-10" />
       <div className="absolute top-14 left-6 text-xs sm:text-sm flex justify-between font-mono tracking-widest z-10 select-none w-[90%]">
         <div>
-          {randomVAlue}&nbsp;{randomVAlue * 4}&nbsp;9012&nbsp;3456ZAPWALLET
+          {/* {randomVAlue} */}
+          3857&nbsp; 2569
+          {/* {randomVAlue * 4} */}
+          &nbsp;9012&nbsp;3456ZAPWALLET
         </div>
         
       </div>
@@ -89,7 +117,7 @@ function Card3D({ Balance }: Card3DProps) {
 
       <div className="flex justify-between w-full p-3 sm:p-6 z-10">
         <div className="flex flex-col">
-          <p className="text-[10px] sm:text-xs text-zinc-300 tracking-widest">USER</p>
+          <p className="text-[10px] sm:text-xs  text-zinc-300 tracking-widest">USER</p>
           <p className="text-xs sm:text-sm font-semibold tracking-wide">{username}</p>
         </div>
         <div className="flex flex-col items-end">

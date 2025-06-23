@@ -87,6 +87,16 @@ export default function Signin() {
               Sign up
             </span>
           </p>
+                <p className="text-xs text-gray-600 mt-1">
+  <strong>Demo Credentials:</strong><br />
+  Email: jack@gmail.com<br />
+  Password: jack!@#
+</p>
+<p className="text-xs mt-1 text-gray-600">
+  Wallet balance is randomly generated for each user in this project.
+</p>
+
+
         </form>
       </div>
     </div>

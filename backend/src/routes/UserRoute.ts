@@ -48,6 +48,7 @@ userRouter.get("/bulk", async (req, res) => {
       users: users.map((user) => ({
         username: user.username,
         _id: user._id,
+        email : user.email
       })),
     });
   } catch (error) {
